@@ -30,13 +30,13 @@ const TrainingForm = ({ options, onAdd }) => {
         <Space>
           <Form.Item
             name="trainingDate"
-            rules={[{ required: true, message: "Required field" }]}
+            rules={[{ required: true, message: "Please enter a valid date" }]}
           >
             <DatePicker format={dateFormat} />
           </Form.Item>
           <Form.Item
             name="hours"
-            rules={[{ required: true, message: "Required field" }]}
+            rules={[{ required: true, message: "Please enter hours" }]}
           >
             <InputNumber min={1} />
           </Form.Item>

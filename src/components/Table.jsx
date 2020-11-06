@@ -3,18 +3,26 @@ import "antd/dist/antd.css";
 import { Table, Button, Popconfirm } from "antd";
 import EditableRow from "./EditableRow";
 import EditableCell from "./EditableCell";
+import moment from "moment";
 
 const TrainingTable = ({ data, onDelete, onSave }) => {
   const columns = [
     {
       title: "date",
       dataIndex: "date",
+      sorter: ({ date: first }, { date: second }) => {
+        return (
+          moment(first, "DD-MM-YYYY").unix() -
+          moment(second, "DD-MM-YYYY").unix()
+        );
+      },
       width: "30%",
       editable: true,
     },
     {
       title: "hours",
       dataIndex: "hours",
+      sorter: (a, b) => a.hours - b.hours,
       width: "20%",
       editable: true,
     },
@@ -32,7 +40,7 @@ const TrainingTable = ({ data, onDelete, onSave }) => {
         data.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
-            onConfirm={() => (onDelete = record.key)}
+            onConfirm={() => onDelete(record.key)}
           >
             <a>Delete</a>
           </Popconfirm>
