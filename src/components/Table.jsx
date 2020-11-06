@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "antd/dist/antd.css";
-import { Table, Button, Popconfirm } from "antd";
+import { Table, Popconfirm } from "antd";
 import EditableRow from "./EditableRow";
 import EditableCell from "./EditableCell";
 import moment from "moment";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const TrainingTable = ({ data, onDelete, onSave }) => {
   const columns = [
@@ -16,14 +17,14 @@ const TrainingTable = ({ data, onDelete, onSave }) => {
           moment(second, "DD-MM-YYYY").unix()
         );
       },
-      width: "30%",
+      width: "20%",
       editable: true,
     },
     {
       title: "hours",
       dataIndex: "hours",
       sorter: (a, b) => a.hours - b.hours,
-      width: "20%",
+      width: "10%",
       editable: true,
     },
     {
@@ -35,14 +36,15 @@ const TrainingTable = ({ data, onDelete, onSave }) => {
     {
       title: "operation",
       dataIndex: "operation",
-      width: "20%",
+      width: "5%",
+      align: "center",
       render: (text, record) =>
         data.length >= 1 ? (
           <Popconfirm
             title="Sure to delete?"
             onConfirm={() => onDelete(record.key)}
           >
-            <a>Delete</a>
+            <DeleteOutlined style={{ color: "#d11a2a", fontSize: "1.1rem" }} />
           </Popconfirm>
         ) : null,
     },

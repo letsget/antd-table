@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import TrainingForm from "../components/TrainingForm";
-import StepsTable from "../components/StepsTable";
 import TrainingTable from "../components/Table";
-import Table from "../components/Table";
 import { nanoid } from "nanoid";
 import styled from "styled-components";
 import moment from "moment";
 import { Button } from "antd";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined } from "@ant-design/icons";
 
 const TableForm = styled.div`
-  max-width: 900px;
+  max-width: 700px;
   margin: 100px auto;
 `;
 
@@ -84,7 +82,11 @@ const StepsRecorderPage = () => {
         date: moment(trainingDate).format("DD-MM-YYYY"),
         hours: hours,
         assigned: selectOption,
-        delete: <Button type="primary">Delete</Button>,
+        delete: (
+          <Button type="primary">
+            <DeleteOutlined />
+          </Button>
+        ),
       },
     ]);
   };
