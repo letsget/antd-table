@@ -1,6 +1,6 @@
 {
   "name": "steps-recorder",
-  "website": "https://letsget.github.io/antd-table",
+  "homepage": "https://letsget.github.io/antd-table",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
